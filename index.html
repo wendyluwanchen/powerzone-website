@@ -134,47 +134,58 @@
 
   <!-- PAGE 3: Services (專業服務) -->
   <div id="page-services" class="page pt-16">
-    <section class="w-full py-20 px-4">
-      <div class="max-w-6xl mx-auto">
-        <h1 class="font-display text-navy-700 text-center mb-4 text-4xl font-bold">專業服務</h1>
-        <p class="text-gray-500 text-center mb-12 max-w-2xl mx-auto text-lg">涵蓋理財規劃、高齡金融、信託、風險協調、稅務防詐與企業培訓等多元服務項目</p>
+    <!-- 專業服務 區塊開始 -->
+    <section id="services" class="services-section">
+      <div class="container">
+        <h2>專業服務</h2>
+        <p class="section-subtitle">涵蓋理財規劃、高齡金融、信託、風險協調、稅務防詐與企業培訓等多元服務項目</p>
+        <p class="notice" style="color: #d9534f; font-size: 0.9em; margin-bottom: 20px;">
+          ※ 所有服務報價皆需聯繫本公司後確認。因課程安排與諮詢案件會依內容、需求與難易度不同而調整費用，請先與我們聯絡評估後報價，恕無固定價目表。
+        </p>
         
-        <div class="mb-14 bg-gold-50/50 border border-gold-200 rounded-lg p-6 shadow-sm">
-          <p class="text-navy-700 text-base leading-relaxed flex items-start gap-3">
-            <i data-lucide="info" class="w-6 h-6 text-gold-500 flex-shrink-0 mt-0.5"></i>
-            <span>※ 所有服務報價皆需聯繫本公司後確認。因課程安排與諮詢案件會依內容、需求與難易度不同而調整費用，請先與我們聯絡評估後報價，恕無固定價目表。</span>
-          </p>
-        </div>
-
-        <div class="mb-16">
-          <h2 class="font-semibold text-navy-700 mb-8 border-l-4 border-gold-500 pl-4 text-2xl tracking-wide">理財與財務規劃</h2>
-          <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div class="bg-white rounded-xl p-6 border border-gray-100 shadow-sm card-hover">
-              <h3 class="font-bold text-navy-700 mb-3 text-lg">金融投資理財諮詢</h3>
-              <p class="text-gray-500 text-sm leading-relaxed">協助個人與家庭進行資產配置、投資策略擬定與風險評估。</p>
+        <div class="services-grid">
+          <!-- 類別一：理財與財務規劃 -->
+          <div class="service-category">
+            <h3>理財與財務規劃</h3>
+            <div class="service-item">
+              <h4>金融投資理財諮詢</h4>
+              <p>協助個人與家庭進行資產配置、投資策略擬定與風險評估。</p>
             </div>
-            <div class="bg-white rounded-xl p-6 border border-gray-100 shadow-sm card-hover">
-              <h3 class="font-bold text-navy-700 mb-3 text-lg">婚姻財產諮詢</h3>
-              <p class="text-gray-500 text-sm leading-relaxed">針對婚前婚後財產規劃、分配與保全提供專業建議。</p>
+            <div class="service-item">
+              <h4>婚姻財產諮詢</h4>
+              <p>針對婚前婚後財產規劃、分配與保全提供專業建議。</p>
             </div>
           </div>
-        </div>
-        <!-- 服務區塊縮減省略（維持原本版面，此處僅展示結構） -->
-        <div class="mb-16">
-          <h2 class="font-semibold text-navy-700 mb-8 border-l-4 border-gold-500 pl-4 text-2xl tracking-wide">高齡金融與家庭財務</h2>
-          <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div class="bg-white rounded-xl p-6 border border-gray-100 shadow-sm card-hover">
-              <h3 class="font-bold text-navy-700 mb-3 text-lg">專屬高齡金融諮詢</h3>
-              <p class="text-gray-500 text-sm leading-relaxed">針對銀髮族群的資產保全、退休規劃與金融權益保障。</p>
+
+          <!-- 類別二：高齡金融與家庭財務 -->
+          <div class="service-category">
+            <h3>高齡金融與家庭財務</h3>
+            <div class="service-item">
+              <h4>專屬高齡金融諮詢</h4>
+              <p>針對銀髮族群的資產保全、退休規劃與金融權益保障。</p>
             </div>
-            <div class="bg-white rounded-xl p-6 border border-gray-100 shadow-sm card-hover">
-              <h3 class="font-bold text-navy-700 mb-3 text-lg">政府補助諮詢</h3>
-              <p class="text-gray-500 text-sm leading-relaxed">協助了解並申請各項政府福利、社會補助與長照資源。</p>
+            <div class="service-item">
+              <h4>政府補助諮詢</h4>
+              <p>協助了解並申請各項政府福利、社會補助與長照資源。</p>
+            </div>
+          </div>
+
+          <!-- 類別三：全方位陪伴與風險規劃 -->
+          <div class="service-category">
+            <h3>全方位陪伴與風險規劃</h3>
+            <div class="service-item">
+              <h4>信託與意定監護諮詢</h4>
+              <p>提供意定監護、遺囑、財產信託與信託監察等專業陪伴與諮詢。</p>
+            </div>
+            <div class="service-item">
+              <h4>企業風險與反詐培訓</h4>
+              <p>企業財務風險諮詢、員工普惠金融培訓與反詐宣導教育。</p>
             </div>
           </div>
         </div>
       </div>
     </section>
+    <!-- 專業服務 區塊結束 -->
   </div>
 
   <!-- PAGE 4: Team (顧問與講師) -->
