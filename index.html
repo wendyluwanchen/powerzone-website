@@ -28,7 +28,72 @@
     .badge-consultant { background: #1e3a6e20; color: #1e3a6e; }
     .badge-instructor { background: #0d948820; color: #0f766e; }
     .badge-both { background: #c9a84c25; color: #9a7b2c; border: 1px solid #c9a84c50; }
-  </style>
+  
+    /* 專業服務區塊專屬樣式 */
+    .services-section {
+      padding: 60px 20px;
+      background-color: #fdfdfd;
+      text-align: center;
+    }
+    .services-section h2 {
+      color: #2c3e50;
+      font-size: 2.2em;
+      margin-bottom: 10px;
+    }
+    .services-section .section-subtitle {
+      color: #666;
+      margin-bottom: 20px;
+      font-size: 1.1em;
+    }
+    .services-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 25px;
+      max-width: 1200px;
+      margin: 30px auto 0;
+    }
+    .service-category {
+      background: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+      padding: 30px;
+      flex: 1 1 320px;
+      text-align: left;
+      border-top: 5px solid #5a669c;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .service-category:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    }
+    .service-category h3 {
+      color: #5a669c;
+      margin-top: 0;
+      border-bottom: 1px solid #eaeaea;
+      padding-bottom: 12px;
+      margin-bottom: 20px;
+      font-size: 1.3em;
+    }
+    .service-item {
+      margin-bottom: 20px;
+    }
+    .service-item:last-child {
+      margin-bottom: 0;
+    }
+    .service-item h4 {
+      color: #333;
+      margin: 0 0 8px 0;
+      font-weight: 600;
+      font-size: 1.1em;
+    }
+    .service-item p {
+      color: #555;
+      margin: 0;
+      font-size: 0.95em;
+      line-height: 1.6;
+    }
+</style>
 
   <script>
     tailwind.config = {
@@ -105,36 +170,7 @@
           <a href="#" class="text-navy-700 hover:text-gold-500 text-sm font-bold underline transition" data-page="events">查看全部消息 →</a>
         </div>
         <!-- 首頁最新消息的容器 (由 JS 動態產生) -->
-        <div id="home-news-grid" class="grid md:grid-cols-3 gap-8"></div>
-      </div>
-    </section>
-  </div>
-
-  <!-- PAGE 2: About (關於鵬容) -->
-  <div id="page-about" class="page pt-16">
-    <section class="w-full py-20 px-4">
-      <div class="max-w-6xl mx-auto">
-        <h1 class="font-display text-navy-700 text-center mb-16 text-4xl font-bold">關於鵬容</h1>
-        <div class="grid md:grid-cols-2 gap-12 items-center">
-          <div>
-            <p class="text-gray-700 leading-relaxed mb-6 text-lg">鵬容國際有限公司（Power Zone，統一編號：92602824）成立於 2023 年，以普惠金融教育與專業財務管理顧問為核心，協助個人、家庭與企業做更穩健的財務與風險規劃。</p>
-            <p class="text-gray-700 leading-relaxed text-lg">我們相信，好的顧問不只提供答案，更幫助客戶看見問題的全貌，找到屬於自己的解決路徑。期望成為每一位客戶在人生各階段最值得信賴的財務夥伴。</p>
-          </div>
-          <div class="rounded-2xl overflow-hidden shadow-xl">
-            <img class="w-full h-[500px] object-cover" loading="lazy" src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=1280" alt="團隊合作">
-          </div>
-        </div>
-        <div class="mt-20 bg-navy-50 rounded-2xl p-10 border border-navy-100">
-          <h2 class="font-display text-navy-700 mb-6 text-3xl font-bold border-l-4 border-gold-500 pl-4">核心專注領域</h2>
-          <p class="text-gray-700 leading-relaxed text-lg">鵬容國際的服務對象涵蓋各年齡層與多元客群，從個人理財、家庭財務到企業規劃皆在我們的專業範疇內。現階段因應社會趨勢，我們特別強化高齡金融、全方位陪伴規劃（含意定監護、遺囑、財產信託與信託監察）等領域。</p>
-        </div>
-      </div>
-    </section>
-  </div>
-
-  <!-- PAGE 3: Services (專業服務) -->
-  <div id="page-services" class="page pt-16">
-    <!-- 專業服務 區塊開始 -->
+        <div id="home-news-grid"    <!-- 專業服務 區塊開始 (請將這段 <section> 複製替換掉 GitHub 上舊的 <section>) -->
     <section id="services" class="services-section">
       <div class="container">
         <h2>專業服務</h2>
@@ -144,7 +180,9 @@
         </p>
         
         <div class="services-grid">
-          <!-- 類別一：理財與財務規劃 -->
+          
+          <!-- 第一列：兩個服務項目的卡片 -->
+          <!-- 類別一：理財與財務規劃 (2個項目) -->
           <div class="service-category">
             <h3>理財與財務規劃</h3>
             <div class="service-item">
@@ -157,7 +195,7 @@
             </div>
           </div>
 
-          <!-- 類別二：高齡金融與家庭財務 -->
+          <!-- 類別二：高齡金融與家庭財務 (2個項目) -->
           <div class="service-category">
             <h3>高齡金融與家庭財務</h3>
             <div class="service-item">
@@ -170,18 +208,60 @@
             </div>
           </div>
 
-          <!-- 類別三：全方位陪伴與風險規劃 -->
+          <!-- 第二列：三個服務項目的卡片 -->
+          <!-- 類別五：稅務 / 補助 / 防詐 (3個項目) -->
           <div class="service-category">
-            <h3>全方位陪伴與風險規劃</h3>
+            <h3>稅務 / 補助 / 防詐</h3>
             <div class="service-item">
-              <h4>信託與意定監護諮詢</h4>
-              <p>提供意定監護、遺囑、財產信託與信託監察等專業陪伴與諮詢。</p>
+              <h4>虛擬貨幣防詐諮詢</h4>
+              <p>辨識常見虛擬貨幣詐騙手法，提供防範建議與風險意識教育。</p>
             </div>
             <div class="service-item">
-              <h4>企業風險與反詐培訓</h4>
-              <p>企業財務風險諮詢、員工普惠金融培訓與反詐宣導教育。</p>
+              <h4>虛擬貨幣稅務諮詢</h4>
+              <p>針對加密貨幣交易所得之稅務申報與合規提供指引。</p>
+            </div>
+            <div class="service-item">
+              <h4>普惠金融教育推廣</h4>
+              <p>透過講座、課程與社區活動，推廣基礎金融素養與防詐意識。</p>
             </div>
           </div>
+
+          <!-- 類別四：風險協調與爭議諮詢 (3個項目) -->
+          <div class="service-category">
+            <h3>風險協調與爭議諮詢</h3>
+            <div class="service-item">
+              <h4>勞資協調諮詢</h4>
+              <p>協助勞資雙方溝通協調，尋求合理共識與解決方案。</p>
+            </div>
+            <div class="service-item">
+              <h4>車禍調解諮詢</h4>
+              <p>提供車禍事故後續調解流程與權益維護的專業指引。</p>
+            </div>
+            <div class="service-item">
+              <h4>理賠申請諮詢</h4>
+              <p>協助保險理賠申請流程、文件準備與爭議處理。</p>
+            </div>
+          </div>
+
+          <!-- 第三列：一個服務項目的卡片 -->
+          <!-- 類別三：信託 / 遺囑 / 意定監護 (1個項目) -->
+          <div class="service-category">
+            <h3>信託 / 遺囑 / 意定監護</h3>
+            <div class="service-item">
+              <h4>財產信託及信託監察人諮詢</h4>
+              <p>提供信託架構設計、信託監察人選任與執行監督等諮詢服務。</p>
+            </div>
+          </div>
+
+          <!-- 類別六：企業溝通與組織培訓 (1個項目) -->
+          <div class="service-category">
+            <h3>企業溝通與組織培訓</h3>
+            <div class="service-item">
+              <h4>企業組織溝通術</h4>
+              <p>為企業設計內部溝通與協作培訓，提升團隊效率與凝聚力。</p>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
