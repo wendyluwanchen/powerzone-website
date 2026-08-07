@@ -60,13 +60,13 @@
       border-radius: 10px;
       box-shadow: 0 4px 15px rgba(0,0,0,0.05);
       padding: 30px;
-      flex: 1 1 320px; /* 讓卡片在手機版會自動變成單排，電腦版會並排 */
+      flex: 1 1 320px;
       text-align: left;
-      border-top: 5px solid #5a669c; /* 帶有優雅質感的藍紫色 */
+      border-top: 5px solid #5a669c;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
     .service-category:hover {
-      transform: translateY(-5px); /* 滑鼠游標移過去會微微浮起的特效 */
+      transform: translateY(-5px);
       box-shadow: 0 8px 25px rgba(0,0,0,0.1);
     }
     .service-category h3 {
@@ -212,7 +212,6 @@
         <div class="services-grid">
           
           <!-- 第一列：兩個服務項目的卡片 -->
-          <!-- 類別一：理財與財務規劃 (2個項目) -->
           <div class="service-category">
             <h3>理財與財務規劃</h3>
             <div class="service-item">
@@ -225,7 +224,6 @@
             </div>
           </div>
 
-          <!-- 類別二：高齡金融與家庭財務 (2個項目) -->
           <div class="service-category">
             <h3>高齡金融與家庭財務</h3>
             <div class="service-item">
@@ -239,7 +237,6 @@
           </div>
 
           <!-- 第二列：三個服務項目的卡片 -->
-          <!-- 類別五：稅務 / 補助 / 防詐 (3個項目) -->
           <div class="service-category">
             <h3>稅務 / 補助 / 防詐</h3>
             <div class="service-item">
@@ -256,7 +253,6 @@
             </div>
           </div>
 
-          <!-- 類別四：風險協調與爭議諮詢 (3個項目) -->
           <div class="service-category">
             <h3>風險協調與爭議諮詢</h3>
             <div class="service-item">
@@ -274,7 +270,6 @@
           </div>
 
           <!-- 第三列：一個服務項目的卡片 -->
-          <!-- 類別三：信託 / 遺囑 / 意定監護 (1個項目) -->
           <div class="service-category">
             <h3>信託 / 遺囑 / 意定監護</h3>
             <div class="service-item">
@@ -283,7 +278,6 @@
             </div>
           </div>
 
-          <!-- 類別六：企業溝通與組織培訓 (1個項目) -->
           <div class="service-category">
             <h3>企業溝通與組織培訓</h3>
             <div class="service-item">
@@ -454,14 +448,14 @@
     const teamData = [
       {
         id: "wendy",
-        role: "both", // 分類: consultant (顧問) / instructor (講師) / both (顧問兼講師)
+        role: "both",
         name: "呂宛臻",
         badge: "顧問兼講師",
         badgeClass: "badge-both",
         title: "執行總監｜CFP® 財務顧問",
         expertise: "投資理財、稅務規劃、婚姻財產、保險設計、資產移轉",
         shortDesc: "2024 CFP® 競賽冠軍，帶您從專業規劃到安心財富。",
-        photo: "wendy.jpeg", // 對應 Google 雲端內的照片檔名
+        photo: "wendy.jpeg",
         achievements: "🏆 2024 CFP® 全國全方位理財競賽 冠軍",
         intro: "擁有多年財務顧問與教育培訓經驗。我相信，穩健的財務規劃不僅是財富累積的關鍵，更是邁向財務自由與安心生活的重要基石。透過專業與策略，協助每一個人在不同人生階段，都能做出更安心、更有選擇權的財務決策。",
         experience: [
@@ -483,7 +477,7 @@
         title: "董事長｜資深顧問",
         expertise: "高齡金融、信託規劃、理財諮詢",
         shortDesc: "致力於提供最安心的陪伴式財務顧問服務。",
-        photo: "https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg?auto=compress&cs=tinysrgb&w=400", // 未來可替換為董事長照片檔名
+        photo: "https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg?auto=compress&cs=tinysrgb&w=400",
         achievements: "",
         intro: "鵬容國際有限公司創辦人，專注於提供個人與企業全方位的財務與風險管理諮詢，特別在信託與高齡金融領域具備豐富實務經驗。",
         experience: ["待編輯：詳細學經歷資料"],
@@ -497,16 +491,16 @@
     const newsData = [
       {
         id: "news-1",
-        category: "course", // 分類: course (課程) / announcement (公告) / highlights (花絮)
+        category: "course",
         categoryText: "課程訊息",
         categoryClass: "bg-navy-100 text-navy-700",
         title: "【講座】高齡金融權益保障工作坊",
         date: "2026 年 9 月｜臺中",
-        image: "https://images.pexels.com/photos/2774556/pexels-photo-2774556.jpeg?auto=compress&cs=tinysrgb&w=800", // 對應照片檔名
+        image: "https://images.pexels.com/photos/2774556/pexels-photo-2774556.jpeg?auto=compress&cs=tinysrgb&w=800",
         shortDesc: "深入探討高齡者常見的金融風險與權益保障議題，歡迎長輩及家屬一同參加。",
         fullDesc: "本場工作坊將深入探討高齡者常見的金融風險與權益保障議題，包含退休金規劃、防詐意識提升、信託與意定監護基礎概念。歡迎長輩及家屬一同參加。",
         info: "歡迎長輩與家屬參加；詳細活動日期與場地將於 8 月初正式公告。",
-        showOnHome: true // 是否顯示在首頁 (true/false)
+        showOnHome: true 
       },
       {
         id: "news-2",
@@ -545,7 +539,7 @@
         shortDesc: "鵬容國際 2026 下半年度課程規劃已出爐，歡迎有興趣的機關團體來信洽詢。",
         fullDesc: "鵬容國際 2026 下半年度課程規劃已出爐，涵蓋防詐、信託、高齡金融等多元主題，歡迎有興趣的機關團體來信洽詢包班或合作。",
         info: "請透過「聯絡我們」表單與我們聯繫索取詳細課綱。",
-        showOnHome: false // 這篇不會出現在首頁，只會出現在最新消息總覽
+        showOnHome: false
       }
     ];
 
@@ -681,27 +675,22 @@
     }
 
     document.addEventListener("DOMContentLoaded", () => {
-      // 1. 渲染動態資料
+      // 渲染動態資料
       renderNewsCards('home-news-grid', newsData, 3);
       renderNewsCards('events-grid', newsData);
       renderTeamCards();
       renderModals();
       
-      // 2. 初始化 Icons (因資料塞入後需重新生成)
+      // 初始化 Icons
       lucide.createIcons();
 
-      // 3. 綁定事件代理 (Event Delegation) 處理彈出視窗
+      // 事件代理 (處理彈出視窗)
       document.body.addEventListener('click', function(e) {
-        // 新聞點擊
         const newsBtn = e.target.closest('.home-news-detail-btn') || e.target.closest('.event-detail-btn');
-        if (newsBtn) {
-          openEventDetail(newsBtn.dataset.newsId);
-        }
-        // 團隊點擊
+        if (newsBtn) openEventDetail(newsBtn.dataset.newsId);
+        
         const teamBtn = e.target.closest('.team-member');
-        if (teamBtn) {
-          openTeamDetail(teamBtn.dataset.memberId);
-        }
+        if (teamBtn) openTeamDetail(teamBtn.dataset.memberId);
       });
     });
 
@@ -775,7 +764,7 @@
     setupFilter('[data-event-filter]', '.event-item', 'eventFilter');
     setupFilter('[data-team-filter]', '.team-member', 'teamFilter');
 
-    // 表單送出模擬 (給本機測試用)
+    // 表單送出模擬
     const form = document.getElementById('contact-form');
     form.addEventListener('submit', (e) => {
       if (window.location.protocol === 'file:') {
