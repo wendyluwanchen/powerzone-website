@@ -1,0 +1,670 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>鵬容國際有限公司 Power Zone</title>
+  
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700;800&family=Source+Serif+Pro:wght@600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    body { font-family: 'Libre Franklin', sans-serif; }
+    .font-display { font-family: 'Source Serif Pro', serif; }
+    .page { display: none; }
+    .page.active { display: block; animation: fadeIn 0.3s ease-in-out; }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    
+    .card-hover { transition: transform 0.2s, box-shadow 0.2s; }
+    .card-hover:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(0,0,0,0.08); }
+    .hero-overlay { background: linear-gradient(160deg, rgba(10,25,60,0.92) 0%, rgba(15,35,71,0.75) 100%); }
+    .nav-link-active { border-bottom: 2px solid #c9a84c; color: #c9a84c !important; }
+    
+    .detail-overlay { position: fixed; inset: 0; z-index: 100; background: rgba(0,0,0,0.6); overflow-y: auto; display: none; }
+    .detail-overlay.open { display: flex; animation: fadeIn 0.2s ease-in-out;}
+    
+    .filter-btn.active { background: #0f2347; color: #fff; }
+    .badge-consultant { background: #1e3a6e20; color: #1e3a6e; }
+    .badge-instructor { background: #0d948820; color: #0f766e; }
+    .badge-both { background: #c9a84c25; color: #9a7b2c; border: 1px solid #c9a84c50; }
+  </style>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: { 50:'#f0f4fa', 100:'#dce4f2', 200:'#b8c9e5', 500:'#1e3a6e', 700:'#0f2347', 800:'#0a1939', 900:'#061022' },
+            gold: { 400:'#d4af37', 500:'#c9a84c', 600:'#b8942f' },
+            teal: { 500:'#0d9488', 600:'#0f766e' }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="w-full min-h-screen bg-white text-gray-800">
+
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
+      <a href="#" class="flex items-center gap-2.5" data-page="home"> 
+        <img src="logo.jpg" alt="鵬容國際 Logo" class="w-10 h-10 object-contain rounded-full shadow-sm border border-gray-100" onerror="this.onerror=null;this.src='https://placehold.co/40x40/0f2347/c9a84c?text=PZ';">
+        <span class="font-bold text-navy-700 text-lg tracking-wide">鵬容國際</span> 
+      </a>
+      <div class="hidden md:flex items-center gap-7 text-sm font-medium">
+        <a href="#" class="text-navy-700 hover:text-gold-500 transition nav-link nav-link-active" data-page="home">首頁</a> 
+        <a href="#" class="text-navy-700 hover:text-gold-500 transition nav-link" data-page="about">關於鵬容</a> 
+        <a href="#" class="text-navy-700 hover:text-gold-500 transition nav-link" data-page="services">專業服務</a> 
+        <a href="#" class="text-navy-700 hover:text-gold-500 transition nav-link" data-page="team">顧問與講師</a> 
+        <a href="#" class="text-navy-700 hover:text-gold-500 transition nav-link" data-page="events">最新消息</a> 
+        <a href="#" class="text-navy-700 hover:text-gold-500 transition nav-link" data-page="contact">聯絡我們</a>
+      </div>
+      <button id="mobile-menu-btn" class="md:hidden p-2 text-navy-700" aria-label="選單">
+        <i data-lucide="menu" class="w-6 h-6"></i>
+      </button>
+    </div>
+    <!-- 手機版選單 -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t px-4 pb-4 space-y-3 text-sm font-medium shadow-lg">
+      <a href="#" class="block py-2 text-navy-700 mobile-nav" data-page="home">首頁</a> 
+      <a href="#" class="block py-2 text-navy-700 mobile-nav" data-page="about">關於鵬容</a> 
+      <a href="#" class="block py-2 text-navy-700 mobile-nav" data-page="services">專業服務</a> 
+      <a href="#" class="block py-2 text-navy-700 mobile-nav" data-page="team">顧問與講師</a> 
+      <a href="#" class="block py-2 text-navy-700 mobile-nav" data-page="events">最新消息</a> 
+      <a href="#" class="block py-2 text-navy-700 mobile-nav" data-page="contact">聯絡我們</a>
+    </div>
+  </nav>
+
+  <!-- PAGE 1: Home (首頁) -->
+  <div id="page-home" class="page active pt-16">
+    <section class="relative w-full h-[80vh] min-h-[600px] flex items-center justify-center">
+      <img class="absolute inset-0 w-full h-full object-cover" loading="lazy" src="https://images.pexels.com/photos/8441812/pexels-photo-8441812.jpeg?auto=compress&cs=tinysrgb&w=1920" alt="顧問諮詢">
+      <div class="hero-overlay absolute inset-0"></div>
+      <div class="relative z-10 flex flex-col items-center justify-center text-center px-4 py-20 w-full">
+        <h1 class="font-display text-white mb-4 text-4xl md:text-5xl lg:text-6xl font-bold tracking-wider">鵬容國際有限公司</h1>
+        <p class="text-white/90 mb-4 text-lg md:text-xl font-medium tracking-widest">財務顧問公司｜普惠金融教育推廣</p>
+        <p class="text-white/70 max-w-2xl mb-10 text-base md:text-lg leading-relaxed">專注理財規劃、高齡金融、財稅諮詢、信託規劃與反詐教育，以陪伴式顧問服務協助個人、家庭與企業做更穩健的財務決策</p>
+        <div class="flex flex-wrap gap-4 justify-center">
+          <a href="tel:0935033107" class="px-8 py-3.5 bg-gold-500 text-navy-900 font-bold rounded-lg hover:bg-gold-400 transition shadow-lg">立即電話諮詢</a> 
+          <a href="#" class="px-8 py-3.5 border-2 border-white text-white font-bold rounded-lg hover:bg-white/10 transition" data-page="contact">聯絡我們</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="w-full py-20 px-4">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="font-display text-navy-700 mb-6 text-3xl font-bold">讓每個人都能做出更好的財務決策</h2>
+        <p class="text-gray-600 leading-relaxed text-lg">鵬容國際以普惠金融教育為核心理念，結合專業財務管理顧問經驗，提供理財規劃、高齡金融照護、信託與意定監護諮詢、反詐宣導等全方位服務，致力於讓金融知識不再遙遠。</p>
+      </div>
+    </section>
+
+    <section class="w-full py-16 px-4 bg-navy-50">
+      <div class="max-w-6xl mx-auto">
+        <div class="flex items-center justify-between mb-10">
+          <h2 class="font-display text-navy-700 text-3xl font-bold border-l-4 border-gold-500 pl-4">最新消息</h2>
+          <a href="#" class="text-navy-700 hover:text-gold-500 text-sm font-bold underline transition" data-page="events">查看全部消息 →</a>
+        </div>
+        <!-- 首頁最新消息的容器 (由 JS 動態產生) -->
+        <div id="home-news-grid" class="grid md:grid-cols-3 gap-8"></div>
+      </div>
+    </section>
+  </div>
+
+  <!-- PAGE 2: About (關於鵬容) -->
+  <div id="page-about" class="page pt-16">
+    <section class="w-full py-20 px-4">
+      <div class="max-w-6xl mx-auto">
+        <h1 class="font-display text-navy-700 text-center mb-16 text-4xl font-bold">關於鵬容</h1>
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+          <div>
+            <p class="text-gray-700 leading-relaxed mb-6 text-lg">鵬容國際有限公司（Power Zone，統一編號：92602824）成立於 2023 年，以普惠金融教育與專業財務管理顧問為核心，協助個人、家庭與企業做更穩健的財務與風險規劃。</p>
+            <p class="text-gray-700 leading-relaxed text-lg">我們相信，好的顧問不只提供答案，更幫助客戶看見問題的全貌，找到屬於自己的解決路徑。期望成為每一位客戶在人生各階段最值得信賴的財務夥伴。</p>
+          </div>
+          <div class="rounded-2xl overflow-hidden shadow-xl">
+            <img class="w-full h-[500px] object-cover" loading="lazy" src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=1280" alt="團隊合作">
+          </div>
+        </div>
+        <div class="mt-20 bg-navy-50 rounded-2xl p-10 border border-navy-100">
+          <h2 class="font-display text-navy-700 mb-6 text-3xl font-bold border-l-4 border-gold-500 pl-4">核心專注領域</h2>
+          <p class="text-gray-700 leading-relaxed text-lg">鵬容國際的服務對象涵蓋各年齡層與多元客群，從個人理財、家庭財務到企業規劃皆在我們的專業範疇內。現階段因應社會趨勢，我們特別強化高齡金融、全方位陪伴規劃（含意定監護、遺囑、財產信託與信託監察）等領域。</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- PAGE 3: Services (專業服務) -->
+  <div id="page-services" class="page pt-16">
+    <section class="w-full py-20 px-4">
+      <div class="max-w-6xl mx-auto">
+        <h1 class="font-display text-navy-700 text-center mb-4 text-4xl font-bold">專業服務</h1>
+        <p class="text-gray-500 text-center mb-12 max-w-2xl mx-auto text-lg">涵蓋理財規劃、高齡金融、信託、風險協調、稅務防詐與企業培訓等多元服務項目</p>
+        
+        <div class="mb-14 bg-gold-50/50 border border-gold-200 rounded-lg p-6 shadow-sm">
+          <p class="text-navy-700 text-base leading-relaxed flex items-start gap-3">
+            <i data-lucide="info" class="w-6 h-6 text-gold-500 flex-shrink-0 mt-0.5"></i>
+            <span>※ 所有服務報價皆需聯繫本公司後確認。因課程安排與諮詢案件會依內容、需求與難易度不同而調整費用，請先與我們聯絡評估後報價，恕無固定價目表。</span>
+          </p>
+        </div>
+
+        <div class="mb-16">
+          <h2 class="font-semibold text-navy-700 mb-8 border-l-4 border-gold-500 pl-4 text-2xl tracking-wide">理財與財務規劃</h2>
+          <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="bg-white rounded-xl p-6 border border-gray-100 shadow-sm card-hover">
+              <h3 class="font-bold text-navy-700 mb-3 text-lg">金融投資理財諮詢</h3>
+              <p class="text-gray-500 text-sm leading-relaxed">協助個人與家庭進行資產配置、投資策略擬定與風險評估。</p>
+            </div>
+            <div class="bg-white rounded-xl p-6 border border-gray-100 shadow-sm card-hover">
+              <h3 class="font-bold text-navy-700 mb-3 text-lg">婚姻財產諮詢</h3>
+              <p class="text-gray-500 text-sm leading-relaxed">針對婚前婚後財產規劃、分配與保全提供專業建議。</p>
+            </div>
+          </div>
+        </div>
+        <!-- 服務區塊縮減省略（維持原本版面，此處僅展示結構） -->
+        <div class="mb-16">
+          <h2 class="font-semibold text-navy-700 mb-8 border-l-4 border-gold-500 pl-4 text-2xl tracking-wide">高齡金融與家庭財務</h2>
+          <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="bg-white rounded-xl p-6 border border-gray-100 shadow-sm card-hover">
+              <h3 class="font-bold text-navy-700 mb-3 text-lg">專屬高齡金融諮詢</h3>
+              <p class="text-gray-500 text-sm leading-relaxed">針對銀髮族群的資產保全、退休規劃與金融權益保障。</p>
+            </div>
+            <div class="bg-white rounded-xl p-6 border border-gray-100 shadow-sm card-hover">
+              <h3 class="font-bold text-navy-700 mb-3 text-lg">政府補助諮詢</h3>
+              <p class="text-gray-500 text-sm leading-relaxed">協助了解並申請各項政府福利、社會補助與長照資源。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- PAGE 4: Team (顧問與講師) -->
+  <div id="page-team" class="page pt-16">
+    <section class="w-full py-20 px-4">
+      <div class="max-w-6xl mx-auto">
+        <h1 class="font-display text-navy-700 text-center mb-6 text-4xl font-bold">顧問與講師團隊</h1>
+        <p class="text-gray-500 text-center mb-12 text-lg">點選成員卡片可查看完整個人介紹。以角色標籤區分身份，點選篩選器可快速查找。</p>
+        
+        <div class="flex flex-wrap gap-3 justify-center mb-12">
+          <button class="filter-btn active px-6 py-2.5 rounded-full text-sm font-bold border border-navy-200 transition shadow-sm" data-team-filter="all">全部</button> 
+          <button class="filter-btn px-6 py-2.5 rounded-full text-sm font-bold border border-navy-200 text-navy-700 hover:bg-navy-50 transition shadow-sm" data-team-filter="consultant">顧問</button> 
+          <button class="filter-btn px-6 py-2.5 rounded-full text-sm font-bold border border-navy-200 text-navy-700 hover:bg-navy-50 transition shadow-sm" data-team-filter="instructor">講師</button> 
+          <button class="filter-btn px-6 py-2.5 rounded-full text-sm font-bold border border-navy-200 text-navy-700 hover:bg-navy-50 transition shadow-sm" data-team-filter="both">顧問兼講師</button>
+        </div>
+
+        <!-- 團隊名單容器 (由 JS 動態產生) -->
+        <div id="team-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+      </div>
+    </section>
+  </div>
+
+  <!-- PAGE 5: Events (最新消息) -->
+  <div id="page-events" class="page pt-16">
+    <section class="w-full py-20 px-4">
+      <div class="max-w-6xl mx-auto">
+        <h1 class="font-display text-navy-700 text-center mb-6 text-4xl font-bold">最新消息與活動</h1>
+        <p class="text-gray-500 text-center mb-12 text-lg">課程訊息、最新公告與活動花絮</p>
+        
+        <div class="flex flex-wrap gap-3 justify-center mb-16">
+          <button class="filter-btn active px-6 py-2.5 rounded-full text-sm font-bold border border-navy-200 transition shadow-sm" data-event-filter="all">全部</button> 
+          <button class="filter-btn px-6 py-2.5 rounded-full text-sm font-bold border border-navy-200 text-navy-700 hover:bg-navy-50 transition shadow-sm" data-event-filter="course">課程訊息</button> 
+          <button class="filter-btn px-6 py-2.5 rounded-full text-sm font-bold border border-navy-200 text-navy-700 hover:bg-navy-50 transition shadow-sm" data-event-filter="announcement">最新公告</button> 
+          <button class="filter-btn px-6 py-2.5 rounded-full text-sm font-bold border border-navy-200 text-navy-700 hover:bg-navy-50 transition shadow-sm" data-event-filter="highlights">活動花絮</button>
+        </div>
+
+        <!-- 最新消息容器 (由 JS 動態產生) -->
+        <div id="events-grid" class="grid md:grid-cols-3 gap-8 mb-16"></div>
+      </div>
+    </section>
+  </div>
+
+  <!-- 團隊彈出視窗容器 -->
+  <div id="team-detail-overlay" class="detail-overlay items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto shadow-2xl relative">
+      <button id="team-detail-close-btn" class="absolute top-4 right-4 w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 z-10">
+        <i data-lucide="x" class="w-5 h-5 text-gray-700"></i>
+      </button>
+      <div id="team-detail-content-container" class="p-8 md:p-12"></div>
+    </div>
+  </div>
+
+  <!-- 消息彈出視窗容器 -->
+  <div id="event-detail-overlay" class="detail-overlay items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto shadow-2xl relative">
+      <button id="detail-close-btn" class="absolute top-4 right-4 w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 z-10">
+        <i data-lucide="x" class="w-5 h-5 text-gray-700"></i>
+      </button>
+      <div id="event-detail-content-container" class="p-8 md:p-12"></div>
+    </div>
+  </div>
+
+  <!-- PAGE 6: Contact (聯絡我們) -->
+  <div id="page-contact" class="page pt-16">
+    <section class="w-full py-20 px-4">
+      <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-start">
+        
+        <div>
+          <h1 class="font-display text-navy-700 mb-6 text-4xl font-bold">聯絡我們</h1>
+          <p class="text-gray-600 mb-10 text-lg leading-relaxed">無論是課程洽詢、顧問諮詢或合作提案，歡迎透過以下方式與我們聯繫，我們將於工作日內盡快回覆。</p>
+          <div class="mb-10 bg-gold-50/50 border border-gold-200 rounded-lg p-5 shadow-sm">
+            <p class="text-navy-700 text-sm leading-relaxed flex items-start gap-2">
+              <i data-lucide="info" class="w-5 h-5 text-gold-500 flex-shrink-0 mt-0.5"></i>
+              <span>報價說明：因課程安排與諮詢案件會依內容、需求與難易度不同而調整費用，請先與我們聯絡評估後報價。</span>
+            </p>
+          </div>
+          <div class="space-y-6 text-base text-gray-700 font-medium">
+            <div class="flex items-start gap-4">
+              <i data-lucide="map-pin" class="w-6 h-6 text-gold-500 flex-shrink-0 mt-0.5"></i>
+              <p>臺中市西屯區臺灣大道二段910號11樓之7</p>
+            </div>
+            <div class="flex items-start gap-4">
+              <i data-lucide="mail" class="w-6 h-6 text-gold-500 flex-shrink-0 mt-0.5"></i>
+              <a href="mailto:pz2023tc@gmail.com" class="hover:text-gold-500 transition">pz2023tc@gmail.com</a>
+            </div>
+            <div class="flex items-start gap-4">
+              <i data-lucide="phone" class="w-6 h-6 text-gold-500 flex-shrink-0 mt-0.5"></i>
+              <a href="tel:0935033107" class="hover:text-gold-500 transition">0935-033-107</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-navy-50 rounded-2xl p-8 border border-navy-100 shadow-sm">
+          <form id="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="space-y-5">
+            <input type="hidden" name="form-name" value="contact" />
+            <div class="hidden"><label>機器人過濾: <input name="bot-field" /></label></div>
+            <div>
+              <h3 class="font-bold text-navy-700 text-xl mb-2 border-l-4 border-gold-500 pl-3">諮詢留言</h3>
+              <p class="text-gray-500 text-sm mb-6">您的留言將儲存至我們的系統，我們會透過 Email 盡快回覆您。</p>
+            </div>
+            <div class="grid sm:grid-cols-2 gap-5">
+              <div>
+                <label class="block text-sm font-bold text-navy-700 mb-2">公司／單位名稱</label>
+                <input name="company" type="text" class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:ring-2 focus:ring-gold-500 outline-none text-base transition">
+              </div>
+              <div>
+                <label class="block text-sm font-bold text-navy-700 mb-2">聯絡人姓名 <span class="text-red-500">*</span></label>
+                <input name="name" type="text" required class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:ring-2 focus:ring-gold-500 outline-none text-base transition">
+              </div>
+            </div>
+            <div class="grid sm:grid-cols-2 gap-5">
+              <div>
+                <label class="block text-sm font-bold text-navy-700 mb-2">Email <span class="text-red-500">*</span></label>
+                <input name="email" type="email" required class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:ring-2 focus:ring-gold-500 outline-none text-base transition">
+              </div>
+              <div>
+                <label class="block text-sm font-bold text-navy-700 mb-2">聯絡電話 <span class="text-red-500">*</span></label>
+                <input name="phone" type="tel" required class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:ring-2 focus:ring-gold-500 outline-none text-base transition">
+              </div>
+            </div>
+            <div>
+              <label class="block text-sm font-bold text-navy-700 mb-2">諮詢主題 <span class="text-red-500">*</span></label>
+              <input name="subject" type="text" required class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:ring-2 focus:ring-gold-500 outline-none text-base transition">
+            </div>
+            <div>
+              <label class="block text-sm font-bold text-navy-700 mb-2">需求說明 <span class="text-red-500">*</span></label>
+              <textarea name="message" rows="5" required class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:ring-2 focus:ring-gold-500 outline-none text-base resize-none transition"></textarea>
+            </div>
+            <button type="submit" class="w-full py-4 bg-navy-700 text-white font-bold text-lg rounded-lg hover:bg-navy-800 transition shadow-md">送出留言</button>
+          </form>
+          <div id="form-success" class="hidden mt-6 p-6 bg-green-50 border border-green-200 rounded-lg text-center space-y-2">
+            <i data-lucide="check-circle" class="w-10 h-10 text-green-500 mx-auto mb-2"></i>
+            <p class="text-green-700 font-bold text-lg">感謝您的留言！</p>
+            <p class="text-green-600 text-sm">我們已收到您的訊息，將盡快透過 Email 或電話與您聯繫。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <footer class="w-full py-10 px-4 bg-navy-900 border-t border-navy-800">
+    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left">
+      <div class="flex items-center gap-3">
+        <img src="logo.jpg" alt="鵬容國際 Logo" class="w-10 h-10 object-contain rounded-full bg-white p-0.5 shadow-sm" onerror="this.onerror=null;this.src='https://placehold.co/40x40/0f2347/c9a84c?text=PZ';">
+        <p class="text-white/90 font-bold tracking-wide">鵬容國際有限公司 Power Zone</p>
+      </div>
+      <p class="text-white/50 text-sm font-medium">© 2026 Power Zone. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // =========================================================================
+    // 獨立資料庫 (Data Section) - 未來更新內容，請直接修改下方引號內的文字
+    // =========================================================================
+
+    // 1. 顧問與講師團隊名單
+    const teamData = [
+      {
+        id: "wendy",
+        role: "both", // 分類: consultant (顧問) / instructor (講師) / both (顧問兼講師)
+        name: "呂宛臻",
+        badge: "顧問兼講師",
+        badgeClass: "badge-both",
+        title: "執行總監｜CFP® 財務顧問",
+        expertise: "投資理財、稅務規劃、婚姻財產、保險設計、資產移轉",
+        shortDesc: "2024 CFP® 競賽冠軍，帶您從專業規劃到安心財富。",
+        photo: "wendy.jpeg", // 對應 Google 雲端內的照片檔名
+        achievements: "🏆 2024 CFP® 全國全方位理財競賽 冠軍",
+        intro: "擁有多年財務顧問與教育培訓經驗。我相信，穩健的財務規劃不僅是財富累積的關鍵，更是邁向財務自由與安心生活的重要基石。透過專業與策略，協助每一個人在不同人生階段，都能做出更安心、更有選擇權的財務決策。",
+        experience: [
+          "鵬容國際有限公司 執行總監",
+          "曾任退休協會RFA、金研院及FPAT協會等專業講師",
+          "中教大等大專院校 授課講師",
+          "《聯合新聞網》、《好險有錢》、《商益》等媒體專欄作家"
+        ],
+        certificates: "CFP® 國際認證財務規劃顧問、RFC 國際認證財務顧問師、AFP 理財規劃顧問、RFA 退休理財規劃顧問 等 15 張專業證照。",
+        target: "企業主、高資產族群、屆退族群、有婚姻財產或傳承規劃需求之個人與家庭。",
+        website: "https://chenlovestalktrash.wordpress.com/"
+      },
+      {
+        id: "director-hsu",
+        role: "consultant",
+        name: "徐鵬容",
+        badge: "顧問",
+        badgeClass: "badge-consultant",
+        title: "董事長｜資深顧問",
+        expertise: "高齡金融、信託規劃、理財諮詢",
+        shortDesc: "致力於提供最安心的陪伴式財務顧問服務。",
+        photo: "https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg?auto=compress&cs=tinysrgb&w=400", // 未來可替換為董事長照片檔名
+        achievements: "",
+        intro: "鵬容國際有限公司創辦人，專注於提供個人與企業全方位的財務與風險管理諮詢，特別在信託與高齡金融領域具備豐富實務經驗。",
+        experience: ["待編輯：詳細學經歷資料"],
+        certificates: "待編輯：相關金融與顧問證照",
+        target: "有退休規劃需求之長輩、需進行家族財產分配或信託規劃之客戶。",
+        website: ""
+      }
+    ];
+
+    // 2. 最新消息與課程名單
+    const newsData = [
+      {
+        id: "news-1",
+        category: "course", // 分類: course (課程) / announcement (公告) / highlights (花絮)
+        categoryText: "課程訊息",
+        categoryClass: "bg-navy-100 text-navy-700",
+        title: "【講座】高齡金融權益保障工作坊",
+        date: "2026 年 9 月｜臺中",
+        image: "https://images.pexels.com/photos/2774556/pexels-photo-2774556.jpeg?auto=compress&cs=tinysrgb&w=800", // 對應照片檔名
+        shortDesc: "深入探討高齡者常見的金融風險與權益保障議題，歡迎長輩及家屬一同參加。",
+        fullDesc: "本場工作坊將深入探討高齡者常見的金融風險與權益保障議題，包含退休金規劃、防詐意識提升、信託與意定監護基礎概念。歡迎長輩及家屬一同參加。",
+        info: "歡迎長輩與家屬參加；詳細活動日期與場地將於 8 月初正式公告。",
+        showOnHome: true // 是否顯示在首頁 (true/false)
+      },
+      {
+        id: "news-2",
+        category: "course",
+        categoryText: "課程訊息",
+        categoryClass: "bg-navy-100 text-navy-700",
+        title: "【課程】銀髮族防詐與數位金融素養",
+        date: "2026 年 10 月｜臺中",
+        image: "https://images.pexels.com/photos/7983576/pexels-photo-7983576.jpeg?auto=compress&cs=tinysrgb&w=800",
+        shortDesc: "專為銀髮族設計的數位金融素養課程，從手機詐騙辨識到安全使用網路銀行。",
+        fullDesc: "專為銀髮族設計的數位金融素養課程，從手機詐騙辨識到安全使用網路銀行。活動花絮：專題分享、案例交流與現場問答。",
+        info: "課程資訊：歡迎長輩與家屬參加；活動日期與場地以公告為準。",
+        showOnHome: true
+      },
+      {
+        id: "news-3",
+        category: "highlights",
+        categoryText: "活動花絮",
+        categoryClass: "bg-teal-100 text-teal-700",
+        title: "銀髮族數位素養課程花絮回顧",
+        date: "2026 年 7 月",
+        image: "https://images.pexels.com/photos/7983590/pexels-photo-7983590.jpeg?auto=compress&cs=tinysrgb&w=800",
+        shortDesc: "回顧本月銀髮族數位素養課程的精彩花絮，感謝所有學員的熱情參與！",
+        fullDesc: "回顧本月銀髮族數位素養課程的精彩花絮，感謝所有學員的熱情參與！更多活動照片將陸續更新。",
+        info: "感謝所有學員的熱情參與。",
+        showOnHome: true
+      },
+      {
+        id: "news-4",
+        category: "announcement",
+        categoryText: "最新公告",
+        categoryClass: "bg-gray-200 text-gray-700",
+        title: "2026 下半年度課程總覽公告",
+        date: "2026 年 7 月",
+        image: "https://images.pexels.com/photos/8761327/pexels-photo-8761327.jpeg?auto=compress&cs=tinysrgb&w=800",
+        shortDesc: "鵬容國際 2026 下半年度課程規劃已出爐，歡迎有興趣的機關團體來信洽詢。",
+        fullDesc: "鵬容國際 2026 下半年度課程規劃已出爐，涵蓋防詐、信託、高齡金融等多元主題，歡迎有興趣的機關團體來信洽詢包班或合作。",
+        info: "請透過「聯絡我們」表單與我們聯繫索取詳細課綱。",
+        showOnHome: false // 這篇不會出現在首頁，只會出現在最新消息總覽
+      }
+    ];
+
+    // =========================================================================
+    // 網頁運作邏輯 (Logic Section) - 以下程式碼負責將上方資料動態塞入版面，不需修改
+    // =========================================================================
+
+    function renderNewsCards(containerId, data, limit = null) {
+      const container = document.getElementById(containerId);
+      if (!container) return;
+      
+      let html = '';
+      let displayData = limit ? data.filter(n => n.showOnHome).slice(0, limit) : data;
+      
+      displayData.forEach(news => {
+        html += `
+          <div class="bg-white rounded-xl overflow-hidden border border-gray-100 shadow-sm card-hover cursor-pointer event-item ${containerId === 'home-news-grid' ? 'home-news-detail-btn' : ''}" 
+               data-category="${news.category}" 
+               data-news-id="${news.id}">
+            <img class="w-full ${containerId === 'home-news-grid' ? 'h-48' : 'h-56'} object-cover" loading="lazy" src="${news.image}" alt="${news.title}">
+            <div class="p-6">
+              ${containerId === 'home-news-grid' 
+                ? `<p class="text-gray-500 text-xs mb-2 font-medium tracking-wider">${news.date}</p>`
+                : `<span class="inline-block px-3 py-1 ${news.categoryClass} text-xs font-bold rounded-full mb-4 tracking-wide">${news.categoryText}</span>
+                   <p class="text-gray-500 text-sm mb-4 font-medium tracking-wide">${news.date}</p>`
+              }
+              <h3 class="font-bold text-navy-700 mb-3 ${containerId === 'home-news-grid' ? 'text-lg' : 'text-xl'} line-clamp-1">${news.title}</h3>
+              <p class="text-gray-500 text-sm mb-4 line-clamp-2 leading-relaxed">${news.shortDesc}</p>
+              ${containerId === 'home-news-grid'
+                ? `<span class="text-sm font-bold text-gold-500 group-hover:text-gold-600">查看詳情 →</span>`
+                : `<button class="event-detail-btn w-full text-center px-4 py-3 bg-navy-700 text-white text-sm font-bold rounded-lg hover:bg-navy-800 transition shadow-md" data-news-id="${news.id}">查看詳情</button>`
+              }
+            </div>
+          </div>
+        `;
+      });
+      container.innerHTML = html;
+    }
+
+    function renderTeamCards() {
+      const container = document.getElementById('team-grid');
+      if (!container) return;
+      
+      let html = '';
+      teamData.forEach(member => {
+        html += `
+          <button type="button" class="bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm card-hover team-member text-left" data-role="${member.role}" data-member-id="${member.id}"> 
+            <img class="w-full h-64 object-cover object-top" loading="lazy" src="${member.photo}" alt="${member.name}" onerror="this.onerror=null;this.src='https://placehold.co/400x400/0f2347/c9a84c?text=Avatar';">
+            <div class="p-6">
+              <div class="flex items-center gap-3 mb-3">
+                <h3 class="font-bold text-navy-700 text-xl">${member.name}</h3>
+                <span class="inline-block px-3 py-1 rounded-full text-xs font-bold ${member.badgeClass} tracking-wide">${member.badge}</span>
+              </div>
+              <p class="${member.role === 'instructor' ? 'text-teal-600' : 'text-navy-700'} text-sm font-bold mb-3">${member.title}</p>
+              <p class="text-gray-500 text-sm leading-relaxed mb-2">專長：${member.expertise}</p>
+              <p class="text-gray-400 text-xs italic">簡介：${member.shortDesc}</p>
+            </div>
+          </button> 
+        `;
+      });
+      container.innerHTML = html;
+    }
+
+    function renderModals() {
+      const newsContainer = document.getElementById('event-detail-content-container');
+      const teamContainer = document.getElementById('team-detail-content-container');
+      
+      let newsHtml = '';
+      newsData.forEach(news => {
+        newsHtml += `
+          <div class="event-detail-content hidden" data-detail-id="${news.id}">
+            <span class="inline-block px-3 py-1 ${news.categoryClass} text-xs font-bold rounded-full mb-5">${news.categoryText}</span>
+            <h2 class="font-display text-navy-700 mb-3 text-3xl font-bold">${news.title}</h2>
+            <p class="text-gold-600 text-base font-bold mb-8">${news.date}</p>
+            <p class="text-gray-700 leading-relaxed mb-6 text-lg">${news.fullDesc}</p>
+            <div class="bg-gray-50 rounded-xl p-6 mb-8 border border-gray-100">
+              <h4 class="font-bold text-navy-700 mb-2">📌 資訊</h4>
+              <p class="text-gray-600">${news.info}</p>
+            </div>
+            ${news.category === 'course' ? `<button class="inline-block px-8 py-3.5 bg-gold-500 text-navy-900 font-bold rounded-lg hover:bg-gold-400 transition shadow-md" onclick="showPage('contact'); closeEventDetail();">前往報名 / 洽詢</button>` : ''}
+          </div>
+        `;
+      });
+      if(newsContainer) newsContainer.innerHTML = newsHtml;
+
+      let teamHtml = '';
+      teamData.forEach(member => {
+        let expList = member.experience.map(exp => `<li>${exp}</li>`).join('');
+        
+        teamHtml += `
+          <div class="team-detail-content hidden" data-member-detail="${member.id}">
+            <div class="flex flex-col sm:flex-row gap-8 mb-8">
+              <img class="w-40 h-40 rounded-2xl object-cover object-top flex-shrink-0 shadow-md" loading="lazy" src="${member.photo}" alt="${member.name}" onerror="this.onerror=null;this.src='https://placehold.co/160x160/0f2347/c9a84c?text=Avatar';">
+              <div>
+                <div class="flex items-center gap-3 mb-2">
+                  <h2 class="font-display text-navy-700 text-3xl font-bold">${member.name}</h2>
+                  <span class="${member.badgeClass} px-3 py-1 rounded-full text-xs font-bold">${member.badge}</span>
+                </div>
+                <p class="${member.role === 'instructor' ? 'text-teal-600' : 'text-navy-700'} text-base font-bold mb-2">${member.title}</p>
+                ${member.achievements ? `<p class="text-gold-600 text-sm font-bold mb-4">${member.achievements}</p>` : ''}
+                <p class="text-gray-600 leading-relaxed">${member.intro}</p>
+              </div>
+            </div>
+            <div class="space-y-6 text-base text-gray-600">
+              ${member.experience.length > 0 ? `
+              <div>
+                <h4 class="font-bold text-navy-700 mb-2 border-l-4 border-gold-500 pl-3">學經歷</h4>
+                <ul class="list-disc list-inside leading-relaxed pl-2 space-y-1">${expList}</ul>
+              </div>` : ''}
+              ${member.certificates ? `
+              <div>
+                <h4 class="font-bold text-navy-700 mb-2 border-l-4 border-gold-500 pl-3">證照／資格</h4>
+                <p class="leading-relaxed pl-4">${member.certificates}</p>
+              </div>` : ''}
+              ${member.target ? `
+              <div>
+                <h4 class="font-bold text-navy-700 mb-2 border-l-4 border-gold-500 pl-3">適合對象</h4>
+                <p class="leading-relaxed pl-4">${member.target}</p>
+              </div>` : ''}
+              ${member.website ? `
+              <div class="bg-gray-50 rounded-xl p-5 border border-gray-100 mt-6">
+                 <div class="flex items-center gap-2 mb-2">
+                   <i data-lucide="link" class="w-5 h-5 text-gold-600"></i>
+                   <h4 class="font-bold text-navy-700">個人品牌網站</h4>
+                 </div>
+                 <a href="${member.website}" target="_blank" class="text-gold-600 hover:text-gold-500 font-bold underline underline-offset-4 ml-7 transition">前往瀏覽</a>
+              </div>` : ''}
+            </div>
+          </div>
+        `;
+      });
+      if(teamContainer) teamContainer.innerHTML = teamHtml;
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      // 1. 渲染動態資料
+      renderNewsCards('home-news-grid', newsData, 3);
+      renderNewsCards('events-grid', newsData);
+      renderTeamCards();
+      renderModals();
+      
+      // 2. 初始化 Icons (因資料塞入後需重新生成)
+      lucide.createIcons();
+
+      // 3. 綁定事件代理 (Event Delegation) 處理彈出視窗
+      document.body.addEventListener('click', function(e) {
+        // 新聞點擊
+        const newsBtn = e.target.closest('.home-news-detail-btn') || e.target.closest('.event-detail-btn');
+        if (newsBtn) {
+          openEventDetail(newsBtn.dataset.newsId);
+        }
+        // 團隊點擊
+        const teamBtn = e.target.closest('.team-member');
+        if (teamBtn) {
+          openTeamDetail(teamBtn.dataset.memberId);
+        }
+      });
+    });
+
+    // 頁面導覽邏輯
+    const pages = document.querySelectorAll('.page');
+    const navLinks = document.querySelectorAll('.nav-link');
+    window.showPage = function(pageId) {
+      pages.forEach(p => p.classList.remove('active'));
+      const target = document.getElementById('page-' + pageId);
+      if (target) target.classList.add('active');
+      navLinks.forEach(l => l.classList.toggle('nav-link-active', l.dataset.page === pageId));
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    document.querySelectorAll('[data-page]').forEach(el => {
+      el.addEventListener('click', (e) => {
+        const page = el.dataset.page;
+        if (page) { 
+          e.preventDefault(); 
+          showPage(page); 
+          document.getElementById('mobile-menu').classList.add('hidden'); 
+        }
+      });
+    });
+
+    document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+
+    // 彈出視窗開關
+    const eventOverlay = document.getElementById('event-detail-overlay');
+    window.openEventDetail = function(id) {
+      document.querySelectorAll('.event-detail-content').forEach(c => c.classList.add('hidden'));
+      const target = document.querySelector(`.event-detail-content[data-detail-id="${id}"]`);
+      if (target) { target.classList.remove('hidden'); eventOverlay.classList.add('open'); document.body.style.overflow = 'hidden'; }
+    }
+    window.closeEventDetail = function() { eventOverlay.classList.remove('open'); document.body.style.overflow = ''; }
+    document.getElementById('detail-close-btn').addEventListener('click', closeEventDetail);
+    eventOverlay.addEventListener('click', (e) => { if (e.target === eventOverlay) closeEventDetail(); });
+
+    const teamOverlay = document.getElementById('team-detail-overlay');
+    window.openTeamDetail = function(id) {
+      document.querySelectorAll('.team-detail-content').forEach(c => c.classList.add('hidden'));
+      const target = document.querySelector(`.team-detail-content[data-member-detail="${id}"]`);
+      if (target) { target.classList.remove('hidden'); teamOverlay.classList.add('open'); document.body.style.overflow = 'hidden'; }
+    }
+    window.closeTeamDetail = function() { teamOverlay.classList.remove('open'); document.body.style.overflow = ''; }
+    document.getElementById('team-detail-close-btn').addEventListener('click', closeTeamDetail);
+    teamOverlay.addEventListener('click', (e) => { if (e.target === teamOverlay) closeTeamDetail(); });
+
+    // 篩選器功能
+    function setupFilter(btnSelector, itemSelector, dataKey) {
+      document.querySelectorAll(btnSelector).forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll(btnSelector).forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          const filterValue = btn.dataset[dataKey];
+          
+          document.querySelectorAll(itemSelector).forEach(item => {
+            const itemValue = item.dataset.role || item.dataset.category;
+            if (filterValue === 'all' || itemValue === filterValue) {
+              item.style.display = 'block';
+              item.style.animation = 'fadeIn 0.3s ease-in-out';
+            } else {
+              item.style.display = 'none';
+            }
+          });
+        });
+      });
+    }
+    setupFilter('[data-event-filter]', '.event-item', 'eventFilter');
+    setupFilter('[data-team-filter]', '.team-member', 'teamFilter');
+
+    // 表單送出模擬 (給本機測試用)
+    const form = document.getElementById('contact-form');
+    form.addEventListener('submit', (e) => {
+      if (window.location.protocol === 'file:') {
+        e.preventDefault();
+        form.style.display = 'none';
+        document.getElementById('form-success').classList.remove('hidden');
+        document.getElementById('form-success').classList.add('block');
+      }
+    });
+  </script>
+</body>
+</html>
