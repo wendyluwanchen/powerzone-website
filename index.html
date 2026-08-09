@@ -182,19 +182,27 @@
     <section class="w-full py-20 px-4">
       <div class="max-w-6xl mx-auto">
         <h1 class="font-display text-navy-700 text-center mb-16 text-4xl font-bold">關於鵬容</h1>
-        <div class="grid md:grid-cols-2 gap-12 items-center">
-          <div>
-            <p class="text-gray-700 leading-relaxed mb-6 text-lg">鵬容國際有限公司（Power Zone，統一編號：92602824）成立於 2023 年，以普惠金融教育與專業財務管理顧問為核心，協助個人、家庭與企業做更穩健的財務與風險規劃。</p>
+        
+        <div class="grid md:grid-cols-2 gap-12 lg:gap-16 items-start">
+          <!-- 左側文字區塊 -->
+          <div class="space-y-6 mt-4">
+            <p class="text-gray-700 leading-relaxed text-lg">鵬容國際有限公司（Power Zone，統一編號：92602824）成立於 2023 年，以普惠金融教育與專業財務管理顧問為核心，協助個人、家庭與企業做更穩健的財務與風險規劃。</p>
+            
             <p class="text-gray-700 leading-relaxed text-lg">我們相信，好的顧問不只提供答案，更幫助客戶看見問題的全貌，找到屬於自己的解決路徑。期望成為每一位客戶在人生各階段最值得信賴的財務夥伴。</p>
+            
+            <!-- 將核心專注領域無縫融入，拿掉原本突兀的色塊 -->
+            <div class="pt-6 mt-6 border-t border-gray-100">
+              <h2 class="font-display text-navy-700 mb-4 text-2xl font-bold border-l-4 border-gold-500 pl-3">核心專注領域</h2>
+              <p class="text-gray-700 leading-relaxed text-lg">我們的服務對象涵蓋各年齡層與多元客群，從個人理財、家庭財務到企業規劃皆在專業範疇內。現階段因應社會趨勢，我們特別強化<span class="font-bold text-navy-700">高齡金融</span>與<span class="font-bold text-navy-700">全方位陪伴規劃</span>（含意定監護、遺囑、財產信託與信託監察）等領域。</p>
+            </div>
           </div>
-          <div class="rounded-2xl overflow-hidden shadow-xl">
-            <img class="w-full h-[500px] object-cover" loading="lazy" src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=1280" alt="團隊合作">
+          
+          <!-- 右側高質感照片 -->
+          <div class="rounded-2xl overflow-hidden shadow-xl relative group">
+            <img class="w-full h-[500px] object-cover object-center transition duration-500 group-hover:scale-105" loading="lazy" src="https://images.pexels.com/photos/8297031/pexels-photo-8297031.jpeg?auto=compress&cs=tinysrgb&w=1280" alt="專業財務顧問">
           </div>
         </div>
-        <div class="mt-20 bg-navy-50 rounded-2xl p-10 border border-navy-100">
-          <h2 class="font-display text-navy-700 mb-6 text-3xl font-bold border-l-4 border-gold-500 pl-4">核心專注領域</h2>
-          <p class="text-gray-700 leading-relaxed text-lg">鵬容國際的服務對象涵蓋各年齡層與多元客群，從個人理財、家庭財務到企業規劃皆在我們的專業範疇內。現階段因應社會趨勢，我們特別強化高齡金融、全方位陪伴規劃（含意定監護、遺囑、財產信託與信託監察）等領域。</p>
-        </div>
+
       </div>
     </section>
   </div>
@@ -354,76 +362,38 @@
   <!-- PAGE 6: Contact (聯絡我們) -->
   <div id="page-contact" class="page pt-16">
     <section class="w-full py-20 px-4">
-      <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-start">
+      <div class="max-w-3xl mx-auto bg-navy-50 rounded-3xl p-10 md:p-16 border border-navy-100 shadow-xl text-center">
+        <h1 class="font-display text-navy-700 mb-6 text-4xl font-bold">聯絡我們</h1>
+        <p class="text-gray-600 mb-10 text-lg leading-relaxed">無論是課程洽詢、顧問諮詢或合作提案，歡迎透過以下方式與我們聯繫，我們將於工作日內盡快回覆。</p>
         
-        <div>
-          <h1 class="font-display text-navy-700 mb-6 text-4xl font-bold">聯絡我們</h1>
-          <p class="text-gray-600 mb-10 text-lg leading-relaxed">無論是課程洽詢、顧問諮詢或合作提案，歡迎透過以下方式與我們聯繫，我們將於工作日內盡快回覆。</p>
-          <div class="mb-10 bg-gold-50/50 border border-gold-200 rounded-lg p-5 shadow-sm">
-            <p class="text-navy-700 text-sm leading-relaxed flex items-start gap-2">
-              <i data-lucide="info" class="w-5 h-5 text-gold-500 flex-shrink-0 mt-0.5"></i>
-              <span>報價說明：因課程安排與諮詢案件會依內容、需求與難易度不同而調整費用，請先與我們聯絡評估後報價。</span>
-            </p>
-          </div>
-          <div class="space-y-6 text-base text-gray-700 font-medium">
-            <div class="flex items-start gap-4">
-              <i data-lucide="map-pin" class="w-6 h-6 text-gold-500 flex-shrink-0 mt-0.5"></i>
-              <p>臺中市西屯區臺灣大道二段910號11樓之7</p>
-            </div>
-            <div class="flex items-start gap-4">
-              <i data-lucide="mail" class="w-6 h-6 text-gold-500 flex-shrink-0 mt-0.5"></i>
-              <a href="mailto:pz2023tc@gmail.com" class="hover:text-gold-500 transition">pz2023tc@gmail.com</a>
-            </div>
-            <div class="flex items-start gap-4">
-              <i data-lucide="phone" class="w-6 h-6 text-gold-500 flex-shrink-0 mt-0.5"></i>
-              <a href="tel:0935033107" class="hover:text-gold-500 transition">0935-033-107</a>
-            </div>
-          </div>
+        <div class="mb-10 bg-gold-50/50 border border-gold-200 rounded-lg p-5 shadow-sm inline-block text-left">
+          <p class="text-navy-700 text-sm leading-relaxed flex items-start gap-2">
+            <i data-lucide="info" class="w-5 h-5 text-gold-500 flex-shrink-0 mt-0.5"></i>
+            <span>報價說明：因課程安排與諮詢案件會依內容、需求與難易度不同而調整費用，請先與我們聯絡評估後報價。</span>
+          </p>
         </div>
-
-        <div class="bg-navy-50 rounded-2xl p-8 border border-navy-100 shadow-sm">
-          <form id="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="space-y-5">
-            <input type="hidden" name="form-name" value="contact" />
-            <div class="hidden"><label>機器人過濾: <input name="bot-field" /></label></div>
-            <div>
-              <h3 class="font-bold text-navy-700 text-xl mb-2 border-l-4 border-gold-500 pl-3">諮詢留言</h3>
-              <p class="text-gray-500 text-sm mb-6">您的留言將儲存至我們的系統，我們會透過 Email 盡快回覆您。</p>
+        
+        <div class="space-y-6 text-lg text-gray-700 font-medium max-w-md mx-auto text-left">
+          <div class="flex items-center gap-4 bg-white p-4 rounded-xl shadow-sm border border-gray-100">
+            <div class="w-12 h-12 bg-gold-50 rounded-full flex items-center justify-center flex-shrink-0">
+              <i data-lucide="map-pin" class="w-6 h-6 text-gold-500"></i>
             </div>
-            <div class="grid sm:grid-cols-2 gap-5">
-              <div>
-                <label class="block text-sm font-bold text-navy-700 mb-2">公司／單位名稱</label>
-                <input name="company" type="text" class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:ring-2 focus:ring-gold-500 outline-none text-base transition">
-              </div>
-              <div>
-                <label class="block text-sm font-bold text-navy-700 mb-2">聯絡人姓名 <span class="text-red-500">*</span></label>
-                <input name="name" type="text" required class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:ring-2 focus:ring-gold-500 outline-none text-base transition">
-              </div>
-            </div>
-            <div class="grid sm:grid-cols-2 gap-5">
-              <div>
-                <label class="block text-sm font-bold text-navy-700 mb-2">Email <span class="text-red-500">*</span></label>
-                <input name="email" type="email" required class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:ring-2 focus:ring-gold-500 outline-none text-base transition">
-              </div>
-              <div>
-                <label class="block text-sm font-bold text-navy-700 mb-2">聯絡電話 <span class="text-red-500">*</span></label>
-                <input name="phone" type="tel" required class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:ring-2 focus:ring-gold-500 outline-none text-base transition">
-              </div>
-            </div>
-            <div>
-              <label class="block text-sm font-bold text-navy-700 mb-2">諮詢主題 <span class="text-red-500">*</span></label>
-              <input name="subject" type="text" required class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:ring-2 focus:ring-gold-500 outline-none text-base transition">
-            </div>
-            <div>
-              <label class="block text-sm font-bold text-navy-700 mb-2">需求說明 <span class="text-red-500">*</span></label>
-              <textarea name="message" rows="5" required class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:ring-2 focus:ring-gold-500 outline-none text-base resize-none transition"></textarea>
-            </div>
-            <button type="submit" class="w-full py-4 bg-navy-700 text-white font-bold text-lg rounded-lg hover:bg-navy-800 transition shadow-md">送出留言</button>
-          </form>
-          <div id="form-success" class="hidden mt-6 p-6 bg-green-50 border border-green-200 rounded-lg text-center space-y-2">
-            <i data-lucide="check-circle" class="w-10 h-10 text-green-500 mx-auto mb-2"></i>
-            <p class="text-green-700 font-bold text-lg">感謝您的留言！</p>
-            <p class="text-green-600 text-sm">我們已收到您的訊息，將盡快透過 Email 或電話與您聯繫。</p>
+            <p class="text-base">臺中市西屯區臺灣大道二段910號11樓之7</p>
           </div>
+          
+          <a href="mailto:pz2023tc@gmail.com" class="flex items-center gap-4 bg-white p-4 rounded-xl shadow-sm border border-gray-100 hover:border-gold-300 transition group">
+            <div class="w-12 h-12 bg-gold-50 rounded-full flex items-center justify-center flex-shrink-0 group-hover:bg-gold-500 transition">
+              <i data-lucide="mail" class="w-6 h-6 text-gold-500 group-hover:text-white transition"></i>
+            </div>
+            <span class="group-hover:text-gold-500 transition">pz2023tc@gmail.com</span>
+          </a>
+          
+          <a href="tel:0935033107" class="flex items-center gap-4 bg-white p-4 rounded-xl shadow-sm border border-gray-100 hover:border-gold-300 transition group">
+            <div class="w-12 h-12 bg-gold-50 rounded-full flex items-center justify-center flex-shrink-0 group-hover:bg-gold-500 transition">
+              <i data-lucide="phone" class="w-6 h-6 text-gold-500 group-hover:text-white transition"></i>
+            </div>
+            <span class="group-hover:text-gold-500 transition">0935-033-107</span>
+          </a>
         </div>
       </div>
     </section>
@@ -467,6 +437,28 @@
         certificates: "CFP® 國際認證財務規劃顧問、RFC 國際認證財務顧問師、AFP 理財規劃顧問、RFA 退休理財規劃顧問 等 15 張專業證照。",
         target: "企業主、高資產族群、屆退族群、有婚姻財產或傳承規劃需求之個人與家庭。",
         website: "https://chenlovestalktrash.wordpress.com/"
+      },
+      {
+        id: "maggy",
+        role: "both",
+        name: "陳佩韓 Maggy",
+        badge: "顧問兼講師",
+        badgeClass: "badge-both",
+        title: "資深顧問｜保險與財務規劃專家",
+        expertise: "保險規劃、財富傳承、信託、業務開發與組織經營、人才培育",
+        shortDesc: "深耕保險與財富管理領域，致力於人才培育，讓專業知識落地應用。",
+        photo: "maggy.jpg",
+        achievements: "🏆 MDRT 百萬圓桌會員",
+        intro: "深耕保險與財務規劃領域多年，現任保險業務主管，同時致力於人才培育與教育訓練。相信「專業可以創造價值，教育可以改變人生」，擅長將複雜的專業知識，以淺顯易懂、貼近實務的方式分享給學員，讓知識真正能夠落地應用。<br><br>期望透過每一堂課，陪伴更多人在專業上持續精進，在人生與事業中找到屬於自己的價值與方向。",
+        experience: [
+          "現任 保險業務主管",
+          "具備多年保險與財務規劃實務經驗",
+          "企業與團隊業務人才培育講師",
+          "授課涵蓋：業務開發、組織經營、時間管理與職涯成長"
+        ],
+        certificates: "RFC 國際認證財務顧問師",
+        target: "有保險規劃、財富傳承需求之客戶，以及欲提升業務經營能力之專業人員。",
+        website: ""
       },
       {
         id: "director-hsu",
@@ -764,16 +756,8 @@
     setupFilter('[data-event-filter]', '.event-item', 'eventFilter');
     setupFilter('[data-team-filter]', '.team-member', 'teamFilter');
 
-    // 表單送出模擬
-    const form = document.getElementById('contact-form');
-    form.addEventListener('submit', (e) => {
-      if (window.location.protocol === 'file:') {
-        e.preventDefault();
-        form.style.display = 'none';
-        document.getElementById('form-success').classList.remove('hidden');
-        document.getElementById('form-success').classList.add('block');
-      }
-    });
+    // =========================================================================
+    // 獨立資料庫 (Data Section) - 未來更新內容，請直接修改下方引號內的文字
   </script>
 </body>
 </html>
